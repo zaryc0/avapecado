@@ -3,9 +3,9 @@
 AVapeCado | Contact us
 @endsection
 <div class="margin 1 float-left width-50">
-    <img src={{ $side_logo['imageAddress'] }} alt={{ $side_logo['description'] }}>
+    <img src={{ $images->find($about_us_left_image['img_id'])->url }} alt={{ $about_us_left_image['description'] }}>
     <div class="rad-05 bg-darkgrey margin-1 padding-1 float-none">
-        {{ $about_us_content['textContent'] }}
+        {{ $about_us_contact_info['textContent'] }}
     </div>
 </div>
 <div class="margin-1 float-left">

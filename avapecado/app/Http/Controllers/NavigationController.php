@@ -36,29 +36,47 @@ class NavigationController extends Controller
 
     public function gallery($page)
     {
-        $data=[
-            'galleries'=> Gallery::all(),
-        ];
+        // this is used to pass additional data to the view e.g images
+        $data_additional = ['galleries'=> Gallery::all()];
 
-        return view('pages.gallery' ,$data);
+        $elements = $page->elements->keyBy('name')->toArray();
+
+        $data = array_merge($elements, $data_additional);
+
+
+        return view('pages.gallery' , $data );
     }
 
     public function basket($page)
     {
-        return view('pages.basket' ,  $page->elements->keyBy('name'));
+        $data_additional = ['galleries'=> Gallery::all()];
+
+        $elements = $page->elements->keyBy('name')->toArray();
+
+        $data = array_merge($elements, $data_additional);
+
+        return view('pages.basket' ,  $data );
     }
 
     public function shop($page)
     {
-        $data = [
-            'products' => Product::all()
-        ];
+        $data_additional = ['products'=> Product::all()];
+
+        $elements = $page->elements->keyBy('name')->toArray();
+
+        $data = array_merge($elements, $data_additional);
         return view('pages.shop' , $data );
     }
 
     public function userPage($page)
     {
-        return view('pages.userPage' , $page->elements->keyBy('name'));
+        $data_additional = ['galleries'=> Gallery::all()];
+
+        $elements = $page->elements->keyBy('name')->toArray();
+
+        $data = array_merge($elements, $data_additional);
+
+        return view('pages.userPage' , $data );
     }
 
     public function adminPage($page)
@@ -68,7 +86,7 @@ class NavigationController extends Controller
         {
             return view('pages.userPage');
         }
-            $data = [
+         $data_additional = [
                 'galleries'         => Gallery::all(),
                 'images'            => Image::all(),
                 'users'             => User::all(),
@@ -77,19 +95,33 @@ class NavigationController extends Controller
                 'products'          => Product::all(),
                 'tags'              => Tag::all(),
             ];
-        return view(
-                'pages.adminPage',
-                array_merge($data, $page->elements->keyBy('name')->toArray())
-            );
+
+        $elements = $page->elements->keyBy('name')->toArray();
+
+        $data = array_merge($elements, $data_additional);
+
+        return view('pages.adminPage', $data );
     }
 
     public function aboutUs($page)
     {
-        return view('page_edits.aboutUs' , $page->elements->keyBy('name'));
+        $data_additional = ['images'=> Image::all()];
+
+        $elements = $page->elements->keyBy('name')->toArray();
+
+        $data = array_merge($elements, $data_additional);
+
+        return view('page_edits.aboutUs' , $data);
     }
 
     public function logIn($page)
     {
+        $data_additional = [];
+
+        $elements = $page->elements->keyBy('name')->toArray();
+
+        $data = array_merge($elements, $data_additional);
+
         if(Auth::check())
         {
             if(!Auth::user()->admin)
@@ -101,6 +133,9 @@ class NavigationController extends Controller
                 return redirect('adminPage');
             }
         }
-        return view('pages.logInPage' , $page->elements->keyBy('name'));
+        else
+        {
+            return view('pages.logInPage' , $data);
+        }
     }
 }
