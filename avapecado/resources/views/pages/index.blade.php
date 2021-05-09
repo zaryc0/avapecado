@@ -7,22 +7,22 @@ AVapeCado | Home
     <!-- main logo-->
     <div class="image_box top: 10%"
     style="top: 10%; width: 100%; margin: 0 auto2; text-align:center">
-        <img src={{ $main_logo['imageAddress'] }} alt={{ $main_logo['description'] }}>
+        <img src="{{ $images->find($home_main_logo['img_id'])->url }}" alt="{{ $home_main_logo['description'] }}">
     </div>
     <div class="image_spread_x" style="top: 35%">
         <!-- left image box-->
-        <img class="img_class" src={{ $left_image['imageAddress'] }} alt={{ $left_image['description'] }} >
+        <img class="img_class" src={{ $images->find($home_left_image['img_id'])->url }} alt={{ $home_left_image['description'] }} >
         <!-- centre image box-->
-        <img class="img_class" src={{ $centre_image['imageAddress'] }} alt={{ $centre_image['description'] }}>
+        <img class="img_class" src={{ $images->find($home_middle_image['img_id'])->url }} alt={{ $home_middle_image['description'] }}>
         <!-- right image box-->
-        <img class="img_class" src={{ $right_image['imageAddress'] }} alt={{ $right_image['description'] }}>
+        <img class="img_class" src={{ $images->find($home_right_image['img_id'])->url }} alt={{ $home_right_image['description'] }}>
     </div>
     <div class="container2 bg-darkgrey">
         <div class="text_display">
-            {{ $intro['textContent'] }}
+            {{ $home_intro['textContent'] }}
         </div>
         <div class="text_display">
-            {{ $main_body['textContent'] }}
+            {{ $home_main_body['textContent'] }}
         </div>
     </div>
 @endsection

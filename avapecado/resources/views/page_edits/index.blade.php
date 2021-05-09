@@ -19,10 +19,10 @@ AVapeCado | Home
     </div>
     <div class="container2 bg-darkgrey">
         <div class="text_display">
-            {{ $intro['textContent'] }}
+            @include("editable.element_text" , ['element' => $intro])
         </div>
         <div class="text_display">
-            {{ $main_body['textContent'] }}
+            @include("editable.element_text" , ['element' => $main_body])
         </div>
     </div>
 @endsection

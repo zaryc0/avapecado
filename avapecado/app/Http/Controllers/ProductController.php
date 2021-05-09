@@ -15,11 +15,19 @@ class ProductController extends Controller
     }
     public function store(Request $request)
     {
-        $product_data = $request->only(['name', 'description','price', 'img_url','tag_id']);
-        $product = Product::create($product_data);
+        $data = [
+            'name'          => $request->input('name'),
+            'description'   => $request->input('description'),
+            'price'         => (double)$request->input('price'),
+            'img_id'        => $request->input('img_id'),
+            'tag_id'        => $request->input('tag_id')
+        ];
+        $product = Product::create($data);
+
         $stock_data = [
-            'p_id' => $product->id,
-            'quantity' => $request->input('quantity')
+            'quantity' => $request->input('quantity'),
+            'product_id' => $product->id
+
         ];
         Stock::create($stock_data);
         return back();

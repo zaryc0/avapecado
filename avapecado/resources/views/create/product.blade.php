@@ -11,20 +11,26 @@
             <input class ="" type="text" name="description" />
         </label>
         <label>
-            <div>Image address</div>
-            <input class ="" type="text" name="imageAddress" />
+            <div>Price</div>
+            <input class ="" type="number" step="0.01" name="price" />
         </label>
         <label>
-            <div>Price</div>
-            <input class ="" type="number" name="textContent" />
+            <div>Image address</div>
+            <select name="img_id">
+                @foreach ($images as $image)
+                    @if($image->gallery_id==8)
+                        <option value="{{ $image->id }}">{{ $image->name }}</option>
+                    @endif
+                @endforeach
+            </select>
         </label>
         <label>
             <div>Quantity</div>
-            <input class ="" type="number" name="textContent" />
+            <input class ="" type="number" name="quantity" />
         </label>
         <label>
             <div>Choose the appropriate tag for the product</div>
-            <select name="page_id">
+            <select name="tag_id">
                 @foreach ($tags as $tag)
                     <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                 @endforeach

@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Element;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Page;
 use App\Models\Gallery;
 use App\Models\Image;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Tag;
 
 class NavigationController extends Controller
 {
@@ -22,7 +24,14 @@ class NavigationController extends Controller
     public function home()
     {
         $page = Page::where('route','/')->firstOrFail();
-        return view('pages.index' , $page->elements->keyBy('name'));
+        // this is used to pass additional data to the view e.g images
+        $data_additional = ['images'=>Image::all()];
+
+        $elements = $page->elements->keyBy('name')->toArray();
+
+        $data = array_merge($elements, $data_additional);
+
+        return view('pages.index' , $data );
     }
 
     public function gallery($page)
@@ -54,14 +63,20 @@ class NavigationController extends Controller
 
     public function adminPage($page)
     {
-        $data = [
-            'galleries' => Gallery::all(),
-            'images' => Image::all(),
-            'users' => User::all(),
-            'pages' => Page::all(),
-            'elements' => Element::all(),
-            'products' => Product::all()
-        ];
+        $data = [];
+        if(!Auth::user()->admin)
+        {
+            return view('pages.userPage');
+        }
+            $data = [
+                'galleries'         => Gallery::all(),
+                'images'            => Image::all(),
+                'users'             => User::all(),
+                'pages'             => Page::all(),
+                'elements'          => Element::all(),
+                'products'          => Product::all(),
+                'tags'              => Tag::all(),
+            ];
         return view(
                 'pages.adminPage',
                 array_merge($data, $page->elements->keyBy('name')->toArray())
@@ -70,11 +85,22 @@ class NavigationController extends Controller
 
     public function aboutUs($page)
     {
-        return view('pages.aboutUs' , $page->elements->keyBy('name'));
+        return view('page_edits.aboutUs' , $page->elements->keyBy('name'));
     }
 
     public function logIn($page)
     {
+        if(Auth::check())
+        {
+            if(!Auth::user()->admin)
+            {
+                return redirect('userPage');
+            }
+            if(Auth::user()->admin)
+            {
+                return redirect('adminPage');
+            }
+        }
         return view('pages.logInPage' , $page->elements->keyBy('name'));
     }
 }

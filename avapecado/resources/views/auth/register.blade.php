@@ -1,6 +1,6 @@
 <div class="input_form rad-05 bg-darkgrey margin-1 padding-1 float-left">
     <h2>Create a new user</h2>
-    <form action="create-user" method="post" enctype="multipart/form-data">
+    <form action="user-register" method="post" enctype="multipart/form-data">
         @csrf
         <label>
             <div>User Name</div>
@@ -26,11 +26,10 @@
             <div>Password</div>
             <input class ="" type="password" name="password" />
         </label>
-<!--    <label>
+       <label>
             <div>Confirm Password</div>
-            <input class ="" type="password" name="password2" />
+            <input class ="" type="password" name="password_confirmation" />
         </label>
--->
         <div>
             <button type="submit">Register</button>
         </div>

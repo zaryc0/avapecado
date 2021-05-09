@@ -17,7 +17,7 @@ class CreateElementTable extends Migration
             $table->increments('id',true);
             $table->string('name');
             $table->string('description');
-            $table->string('imageAddress')->nullable();
+            $table->integer('img_id')->unsigned();
             $table->text('textContent')->nullable();
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
@@ -25,6 +25,7 @@ class CreateElementTable extends Migration
         });
         Schema::table('element', function ($table) {
             $table->foreign('page_id')->references('id')->on('page')->onDelete('cascade');
+            $table->foreign('img_id')->references('id')->on('images')->onDelete('cascade');
         });
     }
 

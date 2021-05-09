@@ -4,5 +4,8 @@ AVapeCado | Log-in
 @endsection
 
 @section("content")
-@include("create.media")
+{{ dump($errors) }}
+{{ dump(Auth::check()) }}
+@include("auth.login")
+@include("auth.register")
 @endsection

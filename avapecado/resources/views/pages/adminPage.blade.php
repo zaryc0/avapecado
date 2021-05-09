@@ -13,11 +13,12 @@ AVapeCado | Admin
     @include("delete.image")
 </div>
 <div class="float-none">
-    @include("create.user")
-    @include("delete.user")
+    @include("create.product")
+    @include("delete.product")
 </div>
 <div class="float-none">
     @include("create.element")
     @include("delete.element")
 </div>
+
 @endsection

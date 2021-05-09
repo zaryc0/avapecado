@@ -18,7 +18,7 @@ class CreateProductTable extends Migration
             $table->string('name');
             $table->string('description');
             $table->double('price');
-            $table->string('imgUrl');
+            $table->string('img_name');
             $table->timestamp('created_at');
             $table->timestamp('updated_at');
             $table->integer('tag_id')->unsigned();

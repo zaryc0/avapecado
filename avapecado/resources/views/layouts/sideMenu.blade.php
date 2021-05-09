@@ -3,9 +3,19 @@
     <a href="/gallery">Gallery</a>
     <a href="/shop">Shop</a>
     <a href="/basket">Basket</a>
-    <a href="/logIn">Log in</a>
+    @if (\Auth::check())
+        @if(\Auth::user()->admin )
+        <a href="/adminPage">Admin page</a>
+        @else
+        <a href="/userPage">Account details</a>
+        @endif
+    @else{
+        <a href="/logIn">Log in</a>
+    @endif
     <a href="/aboutUs">Contact</a>
-
+    @if (\Auth::check())
+        <a href="{{ url('user-logout') }}">Log out</a>
+    @endif
     </div>
 
     <!-- element to open the sidenav -->

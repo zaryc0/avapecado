@@ -4,5 +4,6 @@ AVapeCado | Log-in
 @endsection
 
 @section("content")
-@include("create.media")
+@include("auth.login")
+@include("auth.register")
 @endsection

@@ -5,7 +5,7 @@
             <div class="gallery">
                 @foreach ($gallery->images as $image)
                     <div class="gallery__item">
-                        <img src={{ $image->url }} alt={{ $image->alt_text}} />
+                        <img src="{{ $image->url }}" alt="{{ $image->alt_text}}" />
                     </div>
                 @endforeach
             </div>

@@ -1,7 +1,9 @@
 @extends("layouts.master")
 @section("title")
-AVapeCado | User
+AVapeCado | Account details
 @endsection
+<div>
 
+</div>
 @section("content")
 @endsection

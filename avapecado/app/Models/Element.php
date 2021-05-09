@@ -9,4 +9,9 @@ class Element extends Model
 {
     protected $table ='element';
     protected $fillable = [ 'name','description','imageAddress','textContent','page_id'];
+    public function image_url($id)
+    {
+        $imageUrl = Image::find($id)->url;
+        return $imageUrl ;
+    }
 }

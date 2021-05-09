@@ -1,5 +1,5 @@
 <div class="input_form rad-05 bg-darkgrey margin-1 padding-1 float-left">
-    <h2>Delete an Image</h2>
+    <h2>Delete a product</h2>
     <form action="delete-product" method="post" enctype="multipart/form-data">
         @csrf
         <label>

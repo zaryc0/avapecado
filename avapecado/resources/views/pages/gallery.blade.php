@@ -5,7 +5,11 @@ AVapeCado | Gallery
 @section("content")
     <h1 class="margin-1">Galleries</h1>
     @foreach ($galleries as $gallery)
-        @include("layouts.gallery",['gallery'=>$gallery])
+        @if ($gallery->name!='Products')
+            @if($gallery->name!='elements')
+                @include("layouts.gallery",['gallery'=>$gallery])
+            @endif
+        @endif
     @endforeach
-@endsection
+@endsection|
 
