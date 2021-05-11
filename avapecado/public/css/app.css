@@ -5,12 +5,19 @@
 }
 
 /* util classes */
+.square-10rem{
+    width: 10rem;
+    height: 10rem;
+}
 .bg-gradient-purple-black
 {
     background-image: linear-gradient(rgb(124, 1, 118), rgb(34, 34, 34));
 }
 .bg-darkgrey{
     background-color: rgb(36, 42, 43);
+}
+.block{
+    display: block;
 }
 .padding-1{
     padding:1rem;
@@ -24,12 +31,81 @@
 .float-left{
     float:left
 }
+.float-right{
+    float:right
+}
 .float-none{
     clear: both
 }
 .width-50{
     max-width: 50%;
 }
+.height-fit{
+    height: fit-content;
+}
+
+/* Flex utilities */
+/*
+     BEM (Block Element Modifier)
+     Class naming convention for CSS, created by software engineers
+
+     (1) Base class (button, table, box)
+     .block {}
+
+     (2) Element class (something that belongs within the block)
+     .block__element {}
+
+     (3) A modification to said block (a simple one), (i.e. a red block, a wide block, a gradient box)
+     .block--modifier {}
+*/
+.flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex--wrap {
+    flex-wrap: wrap;
+}
+
+.flex--align-start {
+    align-items: flex-start;
+}
+
+.flex--align-center {
+    align-items: center;
+}
+
+.flex--align-end {
+    align-items: flex-end;
+}
+
+.flex--justify-start {
+    justify-content: start;
+}
+
+.flex--justify-center {
+    justify-content: center;
+}
+
+.flex--justify-end {
+    justify-content: end;
+}
+
+    .flex__item {
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: auto;
+    }
+
+    .flex__item--grow {
+        flex-grow: 1;
+    }
+
+    .flex__item--shrink {
+        flex-shrink: 1;
+    }
+/* end flex utilities */
+
 /* default overides */
 body
 {
@@ -50,7 +126,6 @@ h1{
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     font-weight: bold;
-    color: black;
 }
 h2{
     display: block;
@@ -61,6 +136,38 @@ h2{
     margin-inline-end: 0px;
     font-weight: bold;
 }
+h3{
+    display: block;
+    font-size: 1em;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+a:link {
+    color: magenta;
+    background-color: transparent;
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: pink;
+    background-color: transparent;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: purple;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+
+  a:active {
+    color: yellow;
+    background-color: transparent;
+    text-decoration: underline;
+  }
 
 /* style classes */
 .navbar

@@ -5,6 +5,6 @@ AVapeCado | Shop
 @section("content")
     <h1 class="margin-1">Products</h1>
     @foreach ($products as $product)
-        @include("layouts.productBox",['product'=>$product])
+        @include("layouts.productBox",['product'=>$product, 'image' => $images->find($product['img_id'])])
     @endforeach
 @endsection

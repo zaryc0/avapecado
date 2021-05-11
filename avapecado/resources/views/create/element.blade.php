@@ -1,4 +1,4 @@
-<div class="input_form rad-05 bg-darkgrey margin-1 padding-1 float-left">
+<div class="flex flex--align-center bg-darkgrey height-fit rad-05 padding-1 margin-1">
     <h2>Create an Element</h2>
     <form action="create-element" method="post" enctype="multipart/form-data">
         @csrf

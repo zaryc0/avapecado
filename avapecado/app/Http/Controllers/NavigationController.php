@@ -60,7 +60,7 @@ class NavigationController extends Controller
 
     public function shop($page)
     {
-        $data_additional = ['products'=> Product::all()];
+        $data_additional = ['products'=> Product::all(),'images'=>Image::all()];
 
         $elements = $page->elements->keyBy('name')->toArray();
 
